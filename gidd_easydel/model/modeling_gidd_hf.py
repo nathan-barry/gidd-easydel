@@ -626,7 +626,8 @@ class GiddPreTrainedModel(PreTrainedModel):
 
     def _init_weights(self, module):
         super()._init_weights(module)
-        nn.init.normal_(module.weight, mean=0.0, std=self.config.initializer_range)
+        if hasattr(module, "weight") and module.weight is not None:
+            nn.init.normal_(module.weight, mean=0.0, std=self.config.initializer_range)
 
 
 class GiddModel(GiddPreTrainedModel):
