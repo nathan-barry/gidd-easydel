@@ -529,7 +529,7 @@ class GiddAttention(nn.Module):
             past_key_values=past_key_values,
         )
 
-        attention_out, attentions = self.attention_performer.forward(
+        attention_out, attentions = self.attention_performer(
             q=query_states.transpose(1, 2),
             k=key_states.transpose(1, 2),
             v=value_states.transpose(1, 2),
